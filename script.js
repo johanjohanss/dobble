@@ -105,10 +105,15 @@ function init(){
         cardDiv.classList.add("dobble-card");
         
         for(let i = 0 ; i < n+1 ; i++){
-            let symbol = document.createElement("p");
-            symbol.classList.add("symbol")
-            symbol.innerText = card[i];
-            console.log(card[i])
+            let symbol = document.createElement("img");
+            symbol.classList.add("symbol");
+
+            symbol.setAttribute("src", "img/cyber/" + card[i] + ".png");
+            symbol.style.width = Math.floor(Math.random() * 14) + 12 + "%";
+            /*symbol.style.width = Math.floor(Math.random() * 5) + 5 + "vw";*/
+
+            //symbol.innerText = card[i];
+
             symbol.addEventListener("click", function(){
                 checkSymbols(symbol);
             });
@@ -127,17 +132,19 @@ function checkSymbols(symbolIn){
 
     let currentCards = activeCards.querySelectorAll("div");
    
-    let card1Symbols = currentCards[0].querySelectorAll("p");
-    let card2Symbols = currentCards[1].querySelectorAll("p");
+    let card1Symbols = currentCards[0].querySelectorAll("img");
+    let card2Symbols = currentCards[1].querySelectorAll("img");
 
     card1Symbols.forEach((symbol, i) => {
-        if(symbol.innerText == symbolIn.innerText){
+        console.log("comparing" + symbol.getAttribute("src") + "=" + symbolIn.getAttribute("src"))
+        if(symbol.getAttribute("src") == symbolIn.getAttribute("src")){
             match1 = true;
             i1 = i;
         }
     });
     card2Symbols.forEach((symbol, i) => {
-        if(symbol.innerText == symbolIn.innerText){
+        console.log("comparing" + symbol.getAttribute("src") + "=" + symbolIn.getAttribute("src"))
+        if(symbol.getAttribute("src") == symbolIn.getAttribute("src")){
             match2 = true;
             i2 = i;
         }

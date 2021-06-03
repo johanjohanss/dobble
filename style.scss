@@ -1,16 +1,118 @@
+@font-face {
+    font-family: Hyang;
+    src: url("fonts/Hyang\ Sans.otf");
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
+}
+body *{
+    padding: 0;
+    margin: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: Hyang;
+    color: #041820;
+}
+.title{
+    font-size: 2rem;
+    border-bottom: 3px solid #D061E7;
+    padding: 0.5rem;
+}
+
+.content {
+    flex: 1 0 auto;
+    justify-content: center;
+    align-items: center;
+
+}
+.content-inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 .dobble-card{
-    padding: 2rem;
-    border: 1px solid black;
+    width: 50%;
+    min-height: 25rem;
+    padding: 1rem;
+    margin: 2rem;
+    //border: 1px solid black;
+    background: linear-gradient(ro right, #fafafa, #ececec);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.123);
+
+}
+
+#activeCards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    margin: 4rem 0rem;
 }
 
 .symbol{
-    border: 1px solid black;
     padding: 1rem;
-    border-radius: 50%;
+    margin: 0.5rem;
+    //border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .symbol-marked{
     border: 2px solid red;
+}
+
+
+/*.footer {
+    flex-shrink: 0; 
+}*/
+#freepik{
+    font-family: Hyang;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    *{
+        margin: 0;
+        padding: 0;
+        margin: 0 0.3em;
+    }
+
+    padding: 2rem;
+    background-color: #041820;//rgb(41, 41, 41);
+    color: white;
+    font-size: 1.3rem;
+
+    a{
+        color: #D061E7;//#FFF245;
+        
+        padding: 0;
+        margin: 0 0.3em;
+        text-decoration: none;
+        font-family: Hyang;
+        font-size: 1.3rem;
+    }
 }
