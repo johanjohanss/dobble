@@ -7,6 +7,9 @@
     border: 1px solid black;
     padding: 1rem;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .symbol-marked{
     border: 2px solid red;
