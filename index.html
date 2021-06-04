@@ -4,10 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <title>Dobble</title>
 </head>
 <body>
+    
+    <div id="information">
+        <div class="info-content">
+            <h3 class="info-main-title">Dobble</h3>
+            <p>Dobble is a monomatch game where you need to find the matching symbol
+                in the two cards that are shown. Every card contains a symbol that
+                will match with a symbol on any other card. Check out the official game
+                <a href="https://www.dobblegame.com/en/homepage/">here!</a>
+            </p>
+            <h3>The algorithm</h3>
+            <p>This is an example of how to make your own dobble deck! Read more 
+                <a href="https://mickydore.medium.com/the-dobble-algorithm-b9c9018afc52">in this article.</a>
+            </p>
+            <pre>
+                <code>
+    
+    //order of plane, must be a prime number
+    let n = 7
+
+    //order of plane + 1                 
+    let numOfSymbols = n + 1 
+
+    //the deck of cards
+    let cards = [] 
+
+    function createDeck(){
+        let i, j, k;
+
+        //the current card we are building
+        let card = []; 
+
+        //to start, we build the first card
+        for (i = 1; i&lt= n+1; i++) {
+            card.push(i)
+        }
+
+        cards.push(card)
+
+        //then we build the next n number of cards
+        for (j=1; j&lt=n; j++) {
+            card = []
+            card.push(1)
+            
+            for (k=1; k&lt=n; k++) {
+                card.push(n * j + (k+1))
+            }
+            cards.push(card)
+        }
+
+        //finally we build the next n² number of cards
+        for (i= 1; i&lt=n; i++) {
+            for (j=1; j&lt=n; j++) {
+                card = []
+                card.push(i+1)
+                
+                for (k=1; k&lt= n; k++) {
+                    card.push(n+2+n*(k-1)+(((i-1)*(k-1)+j-1)%n))
+                }
+                cards.push(card)
+            }
+        }
+                </code>
+             </pre>
+
+             <h3>Learn more</h3>
+             <p>If you want to learn more about how the game works and the maths behind it
+                 check out <a href="https://www.youtube.com/watch?v=VTDKqW_GLkw&ab_channel=Stand-upMaths">this video</a>
+                  from <a href="https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A">Stand-up Maths.</a>
+             </p>
+        </div>
+
+          <svg class="x-btn" xmlns="http://www.w3.org/2000/svg" width="2.5rem" fill="currentColor" class="bi bi-x-octagon" viewBox="0 0 16 16">
+            <path d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1 1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+          </svg>
+        <p class="infotext">info</p>
+    </div>
+
     <div class="content">
         <div class="content-inner">
             <h1 class="title">javascript dobble</h1>
@@ -17,7 +97,9 @@
         </div>
     </div>
 
-    <div id="freepik" class="footer">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+    <div id="freepik" class="footer">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+    
+    </div>
     
     <script src="script.js"></script>
 </body>

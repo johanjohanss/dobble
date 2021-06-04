@@ -13,7 +13,7 @@
 
 html, body {
   height: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
   max-width: 100%;
 }
 
@@ -127,15 +127,19 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  max-width: 8.5rem;
+  min-width: 6rem;
 }
 
 .symbol-marked {
   border: 2px solid red;
 }
 
-/*.footer {
-    flex-shrink: 0; 
-}*/
+.footer {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
 #freepik {
   font-family: Hyang;
   display: -webkit-box;
@@ -166,5 +170,116 @@ h1, h2, h3, h4, h5, h6 {
   text-decoration: none;
   font-family: Hyang;
   font-size: 1.3rem;
+}
+
+#information {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 150vh;
+  background-color: #041820;
+  color: white;
+  -webkit-clip-path: polygon(0 0, 0 90%, 65% 90%, 80% 100%, 95% 90%, 100% 90%, 100% 0);
+          clip-path: polygon(0 0, 0 90%, 65% 90%, 80% 100%, 95% 90%, 100% 90%, 100% 0);
+  -webkit-transform: translateY(-95.5%);
+          transform: translateY(-95.5%);
+  -webkit-transition: all 1.2s ease;
+  transition: all 1.2s ease;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#information ::-webkit-scrollbar {
+  display: none;
+}
+
+#information .info-content {
+  height: 100vh;
+  padding: 0.5rem;
+  width: 60%;
+  overflow-y: auto;
+}
+
+#information h3 {
+  color: white;
+  font-size: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid white;
+}
+
+#information .info-main-title {
+  margin-top: 1rem;
+}
+
+#information p {
+  margin-top: 0.5rem;
+}
+
+#information a {
+  color: #ffff73;
+}
+
+#information .infotext {
+  padding: 0.5rem;
+  color: white;
+  position: absolute;
+  right: 18.67vw;
+  bottom: 0.8vw;
+  font-family: Hyang;
+  font-size: 1.3rem;
+}
+
+#information .infotext:hover {
+  cursor: pointer;
+}
+
+#information .x-btn {
+  fill: #D061E7;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+#information .x-btn:hover {
+  cursor: pointer;
+}
+
+.show-info {
+  -webkit-transition: all 1.5s ease;
+  transition: all 1.5s ease;
+  -webkit-transform: translateY(0%) !important;
+          transform: translateY(0%) !important;
+}
+
+pre {
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+  background: -webkit-gradient(linear, left top, right top, from(#c4c4c4), to(#dddddd));
+  background: linear-gradient(to right, #c4c4c4, #dddddd);
+  overflow-y: scroll;
+  max-height: 26rem;
+}
+
+code {
+  padding: 2rem;
+  color: #D061E7;
+  font-family: 'Roboto Mono', monospace;
+}
+
+@media only screen and (max-width: 1200px) {
+  #information {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
