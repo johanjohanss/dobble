@@ -258,7 +258,7 @@ code{
 
 /* Loading */
 
-#loading-wrapper{
+/*#loading-wrapper{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -281,10 +281,32 @@ code{
     align-items: flex-start;
 }
 #loading-inner{
-    transition: all 0.02s ease;
+    //transition: all 0.02s ease;
     height: 4rem;
     width: 0%;
     background-color: $cyberPurple;
+}*/
+#spinner-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    img{
+        width: 30%;
+    }
+    
+    p{
+        margin-bottom: 1.75rem;
+    }
+}
+#spinner{
+    animation: spin 7s linear infinite;
+}
+@keyframes spin{
+    to{
+        transform: rotate(360deg);
+    }
 }
 
 //Media

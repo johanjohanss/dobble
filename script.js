@@ -74,7 +74,7 @@ window.addEventListener("load", function(){
     let allImagesLoaded = false;
     let imagesLoaded = 0;
 
-    let progressBar = document.getElementById("loading-inner");
+    //let progressBar = document.getElementById("loading-inner");
 
 
     init();
@@ -141,16 +141,16 @@ window.addEventListener("load", function(){
                 symbol.style.width = Math.floor(Math.random() * 14) + 12 + "%";
                 
                 symbol.onload = function() {
-                    console.log("Image loaded");
+                    //console.log("Image loaded");
                     imagesLoaded += 1;
 
-                    progressBar.style.width = imagesLoaded / 4 + "%";
+                    //progressBar.style.width = imagesLoaded / 4 + "%";
 
                     if(imagesLoaded == cards.length * (n+1) - (n+1)){
-                        console.log("LOADING DONE: " + (cards.length * 8 - 8))
-                        //activeCards.innerHTML = "";
-                        //getCards();
-                        //appendCards();
+                        //console.log("LOADING DONE: " + (cards.length * 8 - 8))
+                        activeCards.innerHTML = "";
+                        getCards();
+                        appendCards();
                     }
                 };
 
