@@ -86,6 +86,7 @@ h1, h2, h3, h4, h5, h6{
     align-items: center;
 
     margin: 4rem 0rem;
+    min-height: 29rem;
 }
 
 .symbol{
@@ -97,6 +98,10 @@ h1, h2, h3, h4, h5, h6{
 
     max-width: 8.5rem;
     min-width: 6rem;
+
+    &:hover{
+        cursor: pointer;
+    }
 }
 .symbol-marked{
     //border: 2px solid red;
@@ -293,7 +298,7 @@ code{
     align-items: center;
     
     img{
-        width: 30%;
+        width: 25%;
     }
     
     p{
@@ -306,6 +311,27 @@ code{
 @keyframes spin{
     to{
         transform: rotate(360deg);
+    }
+}
+
+//Difficulty slider
+#difficulty{
+    position: absolute;
+    top: 2rem; left: 2rem;
+}
+#diff-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    *{
+        margin: 0rem;
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+        background-color: $cyberBlack;
+
+        color: white;
     }
 }
 
