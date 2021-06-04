@@ -96,6 +96,21 @@ h1, h2, h3, h4, h5, h6 {
       flex-wrap: wrap;
   -webkit-box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.123);
           box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.123);
+  opacity: 0;
+  -webkit-animation: cardFade 1s ease forwards;
+          animation: cardFade 1s ease forwards;
+}
+
+@-webkit-keyframes cardFade {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes cardFade {
+  100% {
+    opacity: 1;
+  }
 }
 
 #activeCards {
@@ -129,10 +144,6 @@ h1, h2, h3, h4, h5, h6 {
           align-items: center;
   max-width: 8.5rem;
   min-width: 6rem;
-}
-
-.symbol-marked {
-  border: 2px solid red;
 }
 
 .footer {
@@ -173,6 +184,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #information {
+  z-index: 1000;
   position: absolute;
   top: 0;
   right: 0;
@@ -275,6 +287,100 @@ code {
   padding: 2rem;
   color: #D061E7;
   font-family: 'Roboto Mono', monospace;
+}
+
+/* Win message */
+.win-message-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.win-message-div * {
+  margin: 0.75rem;
+}
+
+.win-message-div button {
+  border-radius: 0.25rem;
+  border: 1px solid #ebebeb;
+  background-color: #D061E7;
+  color: white;
+  -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.116);
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.116);
+  padding: 1rem 2rem;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.win-message-div button:hover {
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+/* Loading */
+#loading-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  min-width: 100vw;
+  height: 100%;
+}
+
+#loading-wrapper p {
+  margin-bottom: 0.75rem;
+}
+
+#loading-outer {
+  height: 4rem;
+  width: 60%;
+  background-color: #dbd4d4;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.171);
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.171);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+#loading-inner {
+  -webkit-transition: all 0.02s ease;
+  transition: all 0.02s ease;
+  height: 4rem;
+  width: 0%;
+  background-color: #D061E7;
 }
 
 @media only screen and (max-width: 1200px) {

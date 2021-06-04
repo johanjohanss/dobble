@@ -69,6 +69,14 @@ h1, h2, h3, h4, h5, h6{
 
     box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.123);
 
+    opacity: 0;
+    animation: cardFade 1s ease forwards;
+
+}
+@keyframes cardFade{
+    100%{
+        opacity: 1;
+    }
 }
 
 #activeCards{
@@ -91,7 +99,7 @@ h1, h2, h3, h4, h5, h6{
     min-width: 6rem;
 }
 .symbol-marked{
-    border: 2px solid red;
+    //border: 2px solid red;
 }
 
 .footer {
@@ -127,6 +135,8 @@ h1, h2, h3, h4, h5, h6{
 
 
 #information{
+    z-index: 1000;
+
     position: absolute;
     top: 0;
     right:0;
@@ -214,6 +224,67 @@ code{
     //background-color: rgb(221, 221, 221);
     color: $cyberPurple;
     font-family: 'Roboto Mono', monospace;
+}
+
+/* Win message */
+.win-message-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    *{
+        margin: 0.75rem; 
+    }
+    button{
+        border-radius: 0.25rem;
+        border: 1px solid rgb(235, 235, 235);
+        background-color: $cyberPurple;
+        color: white;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.116);
+        padding: 1rem 2rem;
+        transition: all 0.5s ease;
+        transform: scale(1);
+
+        &:hover{
+            cursor: pointer;
+            transition: all 0.5s ease;
+            transform: scale(1.05);
+        }
+    }
+}
+
+/* Loading */
+
+#loading-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 100vw;
+    height: 100%;
+    
+    p{
+        margin-bottom: 0.75rem;
+    }
+}
+#loading-outer{
+    height: 4rem;
+    width: 60%;
+    background-color: rgb(219, 212, 212);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.171);
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+#loading-inner{
+    transition: all 0.02s ease;
+    height: 4rem;
+    width: 0%;
+    background-color: $cyberPurple;
 }
 
 //Media

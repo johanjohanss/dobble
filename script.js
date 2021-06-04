@@ -2,14 +2,20 @@
 window.addEventListener("load", function(){
 
 
-    let n = 7                 //order of plane, must be a prime number
-    let numOfSymbols = n + 1  //order of plane + 1
-    let cards = [] //the deck of cards
+    //order of plane, must be a prime number
+    let n = 7    
 
+    //order of plane + 1
+    let numOfSymbols = n + 1 
+
+    //the deck of cards
+    let cards = [] 
 
     function createDeck(){
         let i, j, k;
-        let card = []; //the current card we are building
+
+        //the current card we are building
+        let card = []; 
 
         //to start, we build the first card
         for (i = 1; i<= n+1; i++) {
@@ -59,13 +65,19 @@ window.addEventListener("load", function(){
 
     let i1, i2;
 
+    let cardToKeep = null;
+
+    //timer
+    let timer;
+    let time;
+
+    let allImagesLoaded = false;
+    let imagesLoaded = 0;
+
+    let progressBar = document.getElementById("loading-inner");
 
 
     init();
-
-    getCards();
-    removeCards();
-    appendCards();
 
 
     //Select 2 random cards from allCards
@@ -75,7 +87,7 @@ window.addEventListener("load", function(){
     }
 
     function updateCards(){
-        r2 = r1;
+        //r2 = cardToKeep;
         r1 = Math.floor(Math.random() * allCards.length);
         console.log("Deck size: " + allCards.length)
     }
@@ -83,7 +95,14 @@ window.addEventListener("load", function(){
     //Append active cards to activeCards
     function appendCards(){
         activeCards.appendChild(allCards[r1]);
-        activeCards.appendChild(allCards[r2]);
+
+        if(cardToKeep != null){
+            activeCards.appendChild(cardToKeep);
+        }else{
+            activeCards.appendChild(allCards[r2]);
+        }
+        
+        
     }
 
     //Remove active cards from allCards array
@@ -92,6 +111,8 @@ window.addEventListener("load", function(){
         allCards.splice(r2, 1);
     }
     function removeCard(){
+        console.log(allCards[r1]);
+        cardToKeep = allCards[r1];
         allCards.splice(r1, 1);
     }
 
@@ -102,6 +123,11 @@ window.addEventListener("load", function(){
 
     //Initialises html cards
     function init(){
+        time = 0;
+
+        timer = setInterval(function(){ 
+            time += 1;
+        }, 1000);
 
         cards.forEach(card => {
             let cardDiv = document.createElement("div");
@@ -113,9 +139,20 @@ window.addEventListener("load", function(){
 
                 symbol.setAttribute("src", "img/cyber/" + card[i] + ".png");
                 symbol.style.width = Math.floor(Math.random() * 14) + 12 + "%";
-                /*symbol.style.width = Math.floor(Math.random() * 5) + 5 + "vw";*/
+                
+                symbol.onload = function() {
+                    console.log("Image loaded");
+                    imagesLoaded += 1;
 
-                //symbol.innerText = card[i];
+                    progressBar.style.width = imagesLoaded / 4 + "%";
+
+                    if(imagesLoaded == cards.length * (n+1) - (n+1)){
+                        console.log("LOADING DONE: " + (cards.length * 8 - 8))
+                        //activeCards.innerHTML = "";
+                        //getCards();
+                        //appendCards();
+                    }
+                };
 
                 symbol.addEventListener("click", function(){
                     checkSymbols(symbol);
@@ -139,14 +176,12 @@ window.addEventListener("load", function(){
         let card2Symbols = currentCards[1].querySelectorAll("img");
 
         card1Symbols.forEach((symbol, i) => {
-            console.log("comparing" + symbol.getAttribute("src") + "=" + symbolIn.getAttribute("src"))
             if(symbol.getAttribute("src") == symbolIn.getAttribute("src")){
                 match1 = true;
                 i1 = i;
             }
         });
         card2Symbols.forEach((symbol, i) => {
-            console.log("comparing" + symbol.getAttribute("src") + "=" + symbolIn.getAttribute("src"))
             if(symbol.getAttribute("src") == symbolIn.getAttribute("src")){
                 match2 = true;
                 i2 = i;
@@ -158,21 +193,69 @@ window.addEventListener("load", function(){
             card2Symbols[i2].classList.add("symbol-marked");
             console.log("You clicked on the correct symbol");
 
-            clearActiveCards();
-            updateCards();
-            removeCard();
-            appendCards();
+            if(allCards.length != 1){
+                clearActiveCards();
+                removeCard();
+                updateCards();
+                appendCards();
+            }else{
+                showGameOverMessage();
+                console.log("Game completed!");
+            }
+
         }else{
             console.log("You clicked on the wrong symbol");
         }
 
     }
 
+    function showGameOverMessage(){
+
+        clearInterval(timer);
+        let finalTime = time;
+
+        activeCards.innerHTML = "";
+
+        let div = document.createElement("div");
+        div.classList.add("win-message-div");
+
+        let message = document.createElement("h2");
+        message.innerText = "You completed the game!";
+
+        let medal = document.createElement("img");
+        medal.setAttribute("src", "img/quality.png");
+        medal.setAttribute("width", "25%");
+
+        let p = document.createElement("p");
+        p.innerText = "It took you " + finalTime +  " seconds. Do you want to try again?"
+
+        let button = document.createElement("button");
+        button.innerText = "Play again";
+        button.addEventListener("click", restartGame);
+
+        div.appendChild(message);
+        div.appendChild(medal);
+        div.appendChild(p);
+        div.appendChild(button);
+
+        activeCards.appendChild(div);
+    }
+
+    function restartGame(){
+        //Run restart game code
+        activeCards.innerHTML = "";
+        allCards = [];
+        init();
+        getCards();
+        appendCards();
+
+        //restart timer
+    }
 
     //Information section
-
     var infoText = document.querySelector(".infotext");
     infoText.addEventListener("click", toggleInfo);
+
     let xBtn = document.querySelector(".x-btn");
     xBtn.addEventListener("click", toggleInfo);
 
