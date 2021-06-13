@@ -11,7 +11,8 @@
   font-family: Helvetica, Arial, sans-serif;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   overflow: hidden;
   max-width: 100%;
@@ -32,14 +33,19 @@ body {
           flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: Hyang;
   color: #041820;
 }
 
 .title {
   font-size: 2rem;
-  border-bottom: 3px solid #D061E7;
+  border-bottom: 3px solid #d061e7;
   padding: 0.5rem;
 }
 
@@ -180,7 +186,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #freepik a {
-  color: #D061E7;
+  color: #d061e7;
   padding: 0;
   margin: 0 0.3em;
   text-decoration: none;
@@ -251,7 +257,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.5rem;
   color: white;
   position: absolute;
-  right: 18.67vw;
+  right: 18.89vw;
   bottom: 0.8vw;
   font-family: Hyang;
   font-size: 1.3rem;
@@ -262,7 +268,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #information .x-btn {
-  fill: #D061E7;
+  fill: #d061e7;
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -290,8 +296,8 @@ pre {
 
 code {
   padding: 2rem;
-  color: #D061E7;
-  font-family: 'Roboto Mono', monospace;
+  color: #d061e7;
+  font-family: "Roboto Mono", monospace;
 }
 
 /* Win message */
@@ -320,7 +326,7 @@ code {
 .win-message-div button {
   border-radius: 0.25rem;
   border: 1px solid #ebebeb;
-  background-color: #D061E7;
+  background-color: #d061e7;
   color: white;
   -webkit-box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.116);
           box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.116);
@@ -444,6 +450,31 @@ code {
 @media only screen and (max-width: 1200px) {
   #information {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #activeCards {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  #activeCards * {
+    width: 90%;
+  }
+  body {
+    overflow: scroll;
+  }
+  #freepik {
+    font-size: 0.7rem;
+  }
+  #freepik a {
+    font-size: 0.7rem;
+  }
+  .title {
+    margin-top: 3rem;
+    margin-bottom: 0.2rem;
   }
 }
 /*# sourceMappingURL=style.css.map */
